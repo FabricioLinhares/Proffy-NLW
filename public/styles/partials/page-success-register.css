@@ -1,0 +1,79 @@
+#page-success-register {
+    background: var(--color-primary);
+}
+
+#container {
+    background-image: url(/images/success-background.svg);
+    background-size: 80vh;
+    color: var(--color-text-in-primary);
+    width: 80vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.success-container {
+    text-align: center;
+}
+
+.success-container img {
+    height: 10rem;
+    margin-bottom: 3.2rem;
+}
+
+.menssage-container {
+    text-align: center;
+    color: var(--color-text-in-primary);
+}
+
+.menssage-container h1 {
+    color: var(--color-title-in-primary);
+    font-weight: 500;
+    font-size: 3.6rem;
+    line-height: 4.6rem;
+    margin-bottom: 2rem;
+}
+
+
+.button-container {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-top: 7rem;
+}
+
+.button-container .study {
+    width: 15rem;
+    height: 6rem;
+
+    border-radius: 0.8rem;
+    margin-right: 1.6rem;
+
+    font-family: 700 2.4rem Archivo;
+
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+
+    transition: background 0.2s;
+
+    color: var(--color-button-text);
+
+    background: var(--color-secondary);
+    margin-right: 0rem;
+}
+
+.button-container .study:hover {
+    background: var(--color-secondary-dark);
+}
+
+@media (max-width: 800px) {
+    :root {
+        font-size: 40%;
+    }
+}
