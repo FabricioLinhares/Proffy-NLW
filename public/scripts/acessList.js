@@ -4,5 +4,6 @@ acessListButton.addEventListener('click', redirectForStudy)
 setTimeout(redirectForStudy, 2000)
 
 function redirectForStudy() {
-    window.location.pathname = '/study'
+    const search = window.location.search
+    window.location.replace('/study' + search)
 }
