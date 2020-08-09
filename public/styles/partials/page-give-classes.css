@@ -81,6 +81,10 @@
     top: 1.8rem;
 }
 
+#page-give-classes .schedule-item .remove-time-block .hidden {
+    display: none;
+}
+
 #page-give-classes .remove-time-block .remove-time {
     display: flex;
     align-items: center;
@@ -199,10 +203,6 @@
     
     #page-give-classes .schedule-item+.schedule-item .remove-time-block {
         top: 3.5rem;
-    }
-
-    #page-give-classes .schedule-item .remove-time-block .hidden {
-        display: none;
     }
 
     #page-give-classes .schedule-item .remove-time-block .remove-time {
