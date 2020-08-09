@@ -1,4 +1,4 @@
-const removeButtons = {
+const removeFieldButtons = {
     hidden() {
         const removeButtonAll = document.querySelectorAll('.remove-time')
         removeButtonAll.forEach(button => {
@@ -25,7 +25,7 @@ const removeButtons = {
         } else {
             window.alert('Você precisa ter, no mínimo, um horário!')
         }
-        removeButtons.update()
+        removeFieldButtons.update()
     }
 }
 
@@ -56,7 +56,7 @@ const addListener = {
         addFieldButton.addEventListener('click', cloneField)
     },
     removeFieldButton(button) {
-        button.addEventListener('click', removeButtons.deleteField)
+        button.addEventListener('click', removeFieldButtons.deleteField)
     },
     inputTimeLimit() {
         const submitButton = document.querySelector('footer button')
@@ -92,10 +92,30 @@ function cloneField() {
 
         const removeFieldButton = newFieldContainer.querySelector('.remove-time')
         addListener.removeFieldButton(removeFieldButton)
-    } else {
-        window.alert('Preencha o último horário antes!')
+        removeFieldButtons.update()
     }
-    removeButtons.update()
 }
 
+function isAllScheduleItemsFilled() {
+    const scheduleItemsInputs = document.querySelectorAll('.schedule-item .user-input')
+    let isAllFilled = true
+    scheduleItemsInputs.forEach(input => {
+        if (input.value.length === 0) {
+            isAllFilled = false
+        }
+    })
+    return isAllFilled
+}
+
+function changeAddFieldButtonMode() {
+    if (isAllScheduleItemsFilled()) {
+        addFieldTimeButton.classList.remove('disabled')
+    } else {
+        addFieldTimeButton.classList.add('disabled')
+    }
+}
+
+const addFieldTimeButton = document.querySelector('#add-time')
+setInterval(changeAddFieldButtonMode, 1000)
 addListener.init()
+
