@@ -61,4 +61,4 @@ addFieldButton.addEventListener('click', cloneField)
 
 const firstTimeField =document.querySelector('.schedule-item')
 removeButtons.addListener(firstTimeField)
-// removeButtons.update()
+removeButtons.update()
