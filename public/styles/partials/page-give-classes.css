@@ -175,8 +175,9 @@
 
     .schedule-item {
         display: grid;
-        grid-template-columns: 2fr 1fr 1fr 0.2fr;
+        grid-template-columns: 2fr 1fr 1fr auto;
         column-gap: 1.6rem;
+        transition: 1s;
     }
 
     #page-give-classes .schedule-item .remove-time-block {
