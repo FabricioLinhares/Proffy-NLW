@@ -88,9 +88,14 @@ async function saveClasses(req, resp) {
     
 }
 
+function pageError(req, resp) {
+    return resp.render('error.html')
+}
+
 module.exports = {
     pageLanding,
     pageStudy,
     pageGiveClasses,
-    saveClasses
+    saveClasses,
+    pageError
 }
