@@ -201,6 +201,10 @@
         top: 3.5rem;
     }
 
+    #page-give-classes .schedule-item .remove-time-block .hidden {
+        display: none;
+    }
+
     #page-give-classes .schedule-item .remove-time-block .remove-time {
         width: 20px;
         height: 20px;

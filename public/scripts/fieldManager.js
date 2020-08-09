@@ -2,13 +2,13 @@ const removeButtons = {
     hidden() {
         const removeButtonAll = document.querySelectorAll('.remove-time')
         removeButtonAll.forEach(button => {
-            button.style.display = 'none'
+            button.classList.add('hidden')
         })
     },
     show() {
         const removeButtonAll = document.querySelectorAll('.remove-time')
         removeButtonAll.forEach(button => {
-            button.style.display = ''
+            button.classList.remove('hidden')
         }) 
     },
     update() {
@@ -99,4 +99,3 @@ function cloneField() {
 }
 
 addListener.init()
-removeButtons.update()
