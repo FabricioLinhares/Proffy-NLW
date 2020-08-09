@@ -1,19 +1,4 @@
 const removeButtons = {
-    addListener(fieldContainer) {
-        const fieldButton = fieldContainer.querySelector('.remove-time')
-        fieldButton.addEventListener('click',this.deleteField)
-    },
-    deleteField(event) {
-        const allScheduleItems = document.querySelectorAll('.schedule-item')
-        if (allScheduleItems.length > 1) {
-            const removeFieldButton = event.target.classList[0] === 'remove-time' ? event.target : event.target.parentNode
-            const removeField = removeFieldButton.parentNode.parentNode
-            removeField.remove()
-        } else {
-            window.alert('Você precisa ter, no mínimo, um horário!')
-        }
-        removeButtons.update()
-    },
     hidden() {
         const removeButtonAll = document.querySelectorAll('.remove-time')
         removeButtonAll.forEach(button => {
@@ -30,6 +15,63 @@ const removeButtons = {
         const removeButtonAll = document.querySelectorAll('.remove-time')
         if (removeButtonAll.length > 1) this.show()
         else this.hidden()
+    },
+    deleteField(event) {
+        const allScheduleItems = document.querySelectorAll('.schedule-item')
+        if (allScheduleItems.length > 1) {
+            const removeFieldButton = event.target.classList[0] === 'remove-time' ? event.target : event.target.parentNode
+            const removeField = removeFieldButton.parentNode.parentNode
+            removeField.remove()
+        } else {
+            window.alert('Você precisa ter, no mínimo, um horário!')
+        }
+        removeButtons.update()
+    }
+}
+
+const updateTimeLimit = {
+    max(inputFrom, index) {
+        const inputTo = document.getElementsByName('time_to[]')[index]
+        inputFrom.setAttribute('max',inputTo.value)
+    },
+    min(inputTo, index) {
+        const inputFrom = document.getElementsByName('time_from[]')[index]
+        inputTo.setAttribute('min',inputFrom.value)
+    },
+    all() {
+        const inputFromAll = document.getElementsByName('time_from[]')
+        const inputToAll = document.getElementsByName('time_to[]')
+        inputFromAll.forEach((inputFrom, index) => {
+            updateTimeLimit.max(inputFrom, index)
+        })
+        inputToAll.forEach((inputTo, index) => {
+            updateTimeLimit.min(inputTo, index)
+        })
+    }
+}
+
+const addListener = {
+    addFieldButton() {
+        const addFieldButton = document.querySelector('#add-time')
+        addFieldButton.addEventListener('click', cloneField)
+    },
+    removeFieldButton(button) {
+        button.addEventListener('click', removeButtons.deleteField)
+    },
+    inputTimeLimit(input) {
+        input.addEventListener('change', updateTimeLimit.all)
+    },
+    init() {
+        this.addFieldButton()
+
+        const firstTimeField = document.querySelector('.schedule-item')
+        const firstRemoveFieldButton = firstTimeField.querySelector('.remove-time')
+        this.removeFieldButton(firstRemoveFieldButton)
+
+        const firstTimeInputFrom = document.getElementsByName('time_from[]')[0]
+        const firstTimeInputTo = document.getElementsByName('time_to[]')[0]
+        this.inputTimeLimit(firstTimeInputFrom)
+        this.inputTimeLimit(firstTimeInputTo)
     }
 }
 
@@ -49,16 +91,20 @@ function cloneField() {
         });
         const scheduleItems = document.querySelector('#schedule-items')
         scheduleItems.appendChild(newFieldContainer)
-        removeButtons.addListener(newFieldContainer)
+
+        const removeFieldButton = newFieldContainer.querySelector('.remove-time')
+        addListener.removeFieldButton(removeFieldButton)
+
+        const inputTimes = newFieldContainer.querySelectorAll('div.input-block input')
+        const inputTimeFrom = inputTimes[0]
+        const inputTimeTo = inputTimes[1]
+        addListener.inputTimeLimit(inputTimeFrom)
+        addListener.inputTimeLimit(inputTimeTo)
     } else {
         window.alert('Preencha o último horário antes!')
     }
     removeButtons.update()
 }
 
-const addFieldButton = document.querySelector('#add-time')
-addFieldButton.addEventListener('click', cloneField)
-
-const firstTimeField =document.querySelector('.schedule-item')
-removeButtons.addListener(firstTimeField)
+addListener.init()
 removeButtons.update()
