@@ -58,8 +58,9 @@ const addListener = {
     removeFieldButton(button) {
         button.addEventListener('click', removeButtons.deleteField)
     },
-    inputTimeLimit(input) {
-        input.addEventListener('change', updateTimeLimit.all)
+    inputTimeLimit() {
+        const submitButton = document.querySelector('footer button')
+        submitButton.addEventListener('click', updateTimeLimit.all)
     },
     init() {
         this.addFieldButton()
@@ -68,10 +69,7 @@ const addListener = {
         const firstRemoveFieldButton = firstTimeField.querySelector('.remove-time')
         this.removeFieldButton(firstRemoveFieldButton)
 
-        const firstTimeInputFrom = document.getElementsByName('time_from[]')[0]
-        const firstTimeInputTo = document.getElementsByName('time_to[]')[0]
-        this.inputTimeLimit(firstTimeInputFrom)
-        this.inputTimeLimit(firstTimeInputTo)
+        this.inputTimeLimit()
     }
 }
 
@@ -94,12 +92,6 @@ function cloneField() {
 
         const removeFieldButton = newFieldContainer.querySelector('.remove-time')
         addListener.removeFieldButton(removeFieldButton)
-
-        const inputTimes = newFieldContainer.querySelectorAll('div.input-block input')
-        const inputTimeFrom = inputTimes[0]
-        const inputTimeTo = inputTimes[1]
-        addListener.inputTimeLimit(inputTimeFrom)
-        addListener.inputTimeLimit(inputTimeTo)
     } else {
         window.alert('Preencha o último horário antes!')
     }
