@@ -25,5 +25,6 @@ server
 .get('/give-classes', pageGiveClasses)
 .post('/save-classes', saveClasses)
 .get('/success-register', successRegister)
+.get('/dev', (req, resp) => resp.render('test.html'))
 .get('*', pageError)
 .listen(5500)

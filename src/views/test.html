@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/partials/custom-select.css">
+    <link rel="stylesheet" href="/styles/partials/forms.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap">
+    <link rel="stylesheet" href="/styles/partials/main.css">
+
+    <style>body {background: rgb(255, 208, 255);}</style>
+</head>
+<body>
+    <form action="">
+        <div class="select-block">
+            <label for="select">valor</label>
+
+            <div class="custom-select">
+                <span class="selected">Selecione algo</span>
+                <div class="options">
+                    <span value="1">Opção 1</span>
+                    <span value="2">Opção 2</span>
+                    <span value="3">Opção 3</span>
+                    <span value="4">Opção 4</span>
+                </div>
+            </div>
+            
+            <select name="weekday" id="weekday" class="">
+                <option value="" hidden>Selecione uma opção</option>
+                <option value="1">oi</option>
+                <option value="2">ola</option>
+                <option value="3">tchau</option>
+                <option value="4">bye</option>
+            </select>
+        </div>
+        
+        <!-- <button type="submit" id="submit">Testar</button> -->
+    </form>
+    
+    
+    
+
+    <script>
+        const body = document.querySelector('body')
+        const teste = document.querySelector(".custom-select")
+        const options = document.querySelector('.options')
+
+        const optionsAll = options.querySelectorAll('li')
+        optionsAll.forEach(li => li.addEventListener('click',selecionar))
+
+        teste.addEventListener('click', aparecer)
+
+        function aparecer() {
+            options.classList.add('show')
+            teste.removeEventListener('click', aparecer)
+            setTimeout(() => {
+                body.addEventListener('click', desaparecer)
+            }, 1)
+        }
+
+        function desaparecer() {
+            options.classList.remove('show')
+            body.removeEventListener('click', desaparecer)
+            teste.addEventListener('click', aparecer)
+        }
+
+        function selecionar(event) {
+            const name = teste.querySelector('.name')
+            name.innerText = event.target.innerText
+
+            const selecionarteste = document.querySelector('#teste')
+            selecionarteste.value = event.target.value
+        }
+
+        const submitButton = document.querySelector('#submit')
+        submitButton.addEventListener('click', testar)
+
+        function testar() {
+
+        }
+    </script>
+</body>
+</html>

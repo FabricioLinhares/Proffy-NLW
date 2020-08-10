@@ -59,7 +59,7 @@
                     <div class="select-block">
                         <label for="subject">Matéria</label>
                         <select name="subject" id="subject" class="user-input" required>
-                            <option value="" hidden="">Selecione uma opção</option>
+                            <option value="" hidden>Selecione qual você quer ensinar</option>
                             {%for subject in subjects %}
                                 <option value="{{loop.index}}">{{subject}}</option>
                             {%endfor%}
@@ -87,7 +87,7 @@
                         <div class="select-block">
                             <label for="weekday">Dia da semana</label>
                             <select name="weekday[]" class="user-input" required>
-                                <option value="" hidden="">Selecione uma opção</option>
+                                <option value="" hidden>Selecione um o dia</option>
                                 {%for weekday in weekdays%}
                                     <option value="{{loop.index0}}">{{weekday}}</option>
                                 {%endfor%}

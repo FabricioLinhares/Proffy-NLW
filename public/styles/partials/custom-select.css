@@ -1,0 +1,64 @@
+.custom-select {
+    --custom-select-width: 100%;
+    --custom-select-height: 5.6rem;
+
+    --custom-select-padding: 1.6rem;
+
+    --custom-select-border-radius: 0.8rem;
+
+    margin-top: 0.8rem;
+
+    font: 1.6rem Archivo;
+}
+
+.custom-select > * {
+    background: var(--color-input-background);
+}
+
+.custom-select .selected {
+    display: block;
+    padding: var(--custom-select-padding);
+    width: var(--custom-select-width);
+    height: var(--custom-select-height);
+    border: 1px solid var(--color-line-in-white);
+    position: relative;
+
+    border-radius: var(--custom-select-border-radius);
+}
+
+.custom-select .selected.open {
+    border-radius: var(--custom-select-border-radius) var(--custom-select-border-radius) 0 0;
+}
+
+
+.custom-select .options {
+    display: none;
+    position: absolute;
+    z-index: 20;
+
+    width: auto;
+
+    border: 1px solid var(--color-line-in-white);
+    
+    border-radius: 0 0 var(--custom-select-border-radius) var(--custom-select-border-radius);
+}
+
+.custom-select .options.show {
+    display: block;
+}
+
+.custom-select .options span {
+    display: block;
+    padding: var(--custom-select-padding);
+    width: 89.69vw;
+    height: var(--custom-select-height);
+}
+
+.custom-select .options span+span {
+    border-top: 1px solid var(--color-line-in-white);
+}
+
+
+.select-block select.hidden {
+    display: none;
+}
